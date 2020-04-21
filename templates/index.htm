@@ -1,0 +1,48 @@
+{% extends 'base.htm' %}
+
+
+    {% block title %}<title>home</title>{% endblock %}
+
+
+    {% block slide %}
+      <div id="wrap">
+          <div id="arrow-left" class="arrows"></div>
+            <div id="slider">
+                <div id="slide1" class="slides">
+                    <div class="slider-content">
+                        <span><p>
+                            catch up everytime
+                        </p></span>
+                    </div>
+                </div>
+                <div id="slide2" class="slides">
+                    <div class="slider-content">
+                        <span><p>
+                            catch up everytime</span>
+                    </div>
+                </div>
+                <div id="slide1" class="slides">
+                    <div class="slider-content">
+                        <span><p>
+                            catch up everytime</span>
+                    </div>
+                </div>
+            </div>
+          <div id="arrow-right" class="arrows"></div>
+      </div>
+    {% endblock %}
+
+
+    {% block content %}
+        <div class="home-content">
+            <h1>Manage your schedules effectively</h1>
+            <h3>TaskMate is the new generation task manager</h3><br>
+            <div><a href="{% url 'todo' %}"><button type="submit">Get started</button></a></div>
+        </div>
+
+    {% endblock %}
+
+    
+    
+</body>
+</html>

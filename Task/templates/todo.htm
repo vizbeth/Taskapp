@@ -1,0 +1,73 @@
+{% extends 'base.htm' %}
+
+{% block title %} <title>todolist</title>{% endblock %}
+
+{% block form %}
+<br><br>
+    <form method="POST" action="{% url 'todo' %}">
+        {% for message in messages %}
+            <div class="alert-box todo-group fade-out">
+                {{ message }}
+                <span class="close-icon">&times;</span>
+            </div>
+        {% endfor %}
+        {% csrf_token %}
+        <div class="todo-group">
+            <input type="text" placeholder="add task?" value="" name='task'><br><br>
+            <button>Add task</button>
+        </div>
+    </form>
+{% endblock %}
+
+
+{% block content %}
+<br><br><br>
+    <table class="todo-group">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Done</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for obj in all_task %}
+                {% if obj.done %}
+            <tr class="complete">
+                <td>{{ obj.task }}</td>
+                <td><a href="{% url 'pending' obj.id %}"><button>mark undone</button></a></td>
+                <td><a href="{% url 'edit' obj.id %}"><button style="background-color: gray">Edit</button></a></td>
+                <td><a href="{% url 'delete' obj.id %}"><button style="background-color:red">Delete</button></a></td>
+            </tr>
+            {% else %}
+            <tr class="not-complete">
+                <td>{{ obj.task }}</td>
+                <td><a href="{% url 'completed' obj.id %}"><button style="background-color: green">mark as done</button></a></td>
+                <td><a href="{% url 'edit' obj.id %}"><button style="background-color: gray">Edit</button></a></td>
+                <td><a href="{% url 'delete' obj.id %}"><button style="background-color: red">Delete</button></a></td>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+{% block pager %}
+<br>
+    <div class="pages">
+        <ul class="page-links">
+            <li><a href="?pg=1"><<</a></li>
+        {% if all_task.has_previous %}
+            <li><a href="?pg={{ all_task.previous_page_number }}">{{ all_task.previous_page_number }}</a></li>
+        {% endif %}
+            <li><a href="?pg={{ all_task.number }}">{{ all_task.number }}</a></li>
+        {% if all_task.has_next %}
+            <li><a href="?pg={{ all_task.next_page_number }}">{{ all_task.next_page_number }}</a></li>
+            {% endif %}
+            <li><a href="?pg={{ all_task.paginator.num_pages }}">>></a></li>
+        </ul>
+    </div>
+{% endblock %}
+

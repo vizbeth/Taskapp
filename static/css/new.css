@@ -1,0 +1,398 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: azure;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 8vh;
+    background-color: blueviolet;
+    color: white;
+    font-size: 18px;
+    position: relative;
+}
+
+.logo{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links{
+
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 85%;
+}
+
+.nav-links li{
+    width: 8%;
+}
+
+.nav-links li a{
+    color: #fff;
+    text-decoration: none;
+}
+
+nav button{
+    width: 90px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 10px;
+    border-color: rgb(134, 134, 209);
+    color: #fff;
+    font-size: 18px;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    margin-top: 5px;
+    background-color: #fff;
+    display: none;
+    transition: 0.5s all ease;
+}
+
+@media screen and (max-width:867px){
+    body{
+        overflow-x: hidden;
+    }
+    .burger div{
+        display: block;
+    }
+
+    .nav-links{
+        position: absolute;
+        right: 0;
+        top: 8vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: blueviolet;
+        height: 92vh;
+        width: 50%;
+        transform: translateX(100%);
+        z-index: 2;
+    }
+
+    .nav-links li{
+        opacity: 0;
+        text-align: center;
+    }
+
+}
+
+.nav-active{
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translate(50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+.swing .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.swing .line2{
+    opacity: 0;
+}
+.swing .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+
+#wrap{
+    display: block;
+    width: 100%;
+}
+
+#slider{
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+}
+
+.slides{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}
+
+#slide1{
+    background-image: url(../images/doctor-1807475_1280.png);
+}
+#slide2{
+    background-image: url(../images/woman-3187087_1920.jpg);
+}
+#slide3{
+    background-image: url(../images/doctor-1807475_1280.png);
+}
+
+.slider-content{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.slides span{
+    font-size: 60px;
+    color: #fff;
+}
+
+.arrows{
+    position: absolute;
+    top: 30%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+#arrow-left{
+    border-width: 20px 30px 20px 0;
+    border-color: transparent #fff transparent transparent;
+    left: 0;
+    margin-left: 30px;
+}
+
+#arrow-right{
+    border-width: 20px 0 20px 30px;
+    border-color: transparent transparent transparent #fff;
+    right: 0;
+    margin-right: 30px;
+}
+
+.home-content{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8%;
+    line-height: 3rem;
+    font-size: 18px;
+    color: rgb(84, 84, 156);
+
+}
+
+.home-content button{
+    width: 6rem;
+    height: 2rem;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(34, 218, 218);
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.home-content button:active{
+    background-color: blue;
+}
+
+.todo-group button{
+    width: 100px;
+    height: 40px;
+    border: solid 1px transparent;
+    background-color: rgba(23, 64, 179, 0.712);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+table{
+    position: relative;
+    width: 70%;
+    text-align: left;
+    line-height: 3rem;
+    border: solid 0.1px rgb(243, 238, 238);
+    margin-left: 2%;
+}
+
+.todo-group{
+    margin-left: 10%;
+    box-shadow: none;
+}
+
+.todo-group td{
+    font-size: 17px;
+}
+
+.todo-group th{
+    font-size: 20px;
+    color: rgb(148, 148, 231);
+}
+
+
+.todo-group input{
+    width: 70%;
+    border: solid 2px rgba(104, 104, 231, 0.185);
+    border-radius: 10px;
+    height: 40px;
+}
+
+
+.complete{
+    background-color: aqua;
+}
+
+
+@media screen and (max-width: 1024px){
+    .slides span{
+        font-size: 40px;
+    }
+
+    .home-content{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10%;
+        line-height: 2rem;
+        font-size: 15px;
+    }
+    
+    .todo-group{
+        width: 100%;
+        margin-left: 2px;
+    }
+    
+
+    table{
+        width: 70%;
+    }
+    
+}
+
+.pages{
+    width: 100%;    
+}
+
+
+.page-links{
+    position: absolute;
+    right: 20%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20%;
+    border: solid gray 0.5px;
+    box-shadow: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.page-links li{
+    border: solid rgb(235, 235, 235) 0.5px;
+    width: 100%;
+    text-align: center;
+    box-shadow: none;
+}
+
+.page-links li:active{
+    background-color: blue;
+    color: #fff;
+}
+
+.alert-box{
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(0, 255, 34);
+    padding: 5px;
+    height: 40px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.alert-box .close-icon{
+    cursor: pointer;
+    font-size: 30px;
+    
+}
+
+.fade-out {
+  animation: fadeOut ease 8s;
+  -webkit-animation: fadeOut ease 8s;
+  -moz-animation: fadeOut ease 8s;
+  -o-animation: fadeOut ease 8s;
+  -ms-animation: fadeOut ease 100s;
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+}
+}
+

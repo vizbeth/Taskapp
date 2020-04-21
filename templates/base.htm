@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>TaskMate</h1>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'todo' %}">Todolist</a></li>
+            <li><a href="#">How to</a></li>
+        {% if user.is_authenticated %}
+            <div class="user" style="display: float;">
+                <h4 style="color: aliceblue;float: left;padding: 5px;color: rgb(138, 206, 138);font-size: 20px;">Logged in as {{ user.username }}</h4>
+                <a href="{% url 'logout' %}"><button>Logout</button></a>
+            </div>
+            {% else %}
+            <div class="user">
+                <a href="{% url 'register' %}"><button>Register</button></a>
+                <a href="{% url 'login' %}"><button>Login</button></a>
+            </div>
+            {% endif %}
+    
+        </ul>
+
+        
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    
+    </nav>
+
+  
+    
+    {% block form %}
+    {% endblock %}
+
+    {% block slide %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block pager %}
+    {% endblock %}
+
+
+<script src="{% static 'js/scale.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.htm' %}
+
+
+{% block content %}
+<br><br>
+{% if task_obj.manage == request.user %}
+    <form method="POST">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+        {% csrf_token %}
+        <div class="todo-group">
+            <input type="text" placeholder="{{ task_obj.task }}?" value="{{ task_obj.task }}" name='task'><br><br>
+            <input type="hidden" value="{{ task_obj.done }}" name="done">
+            <button>Update</button>
+        </div>
+        </form>
+        {% else %}
+        <h1>Page restricted, Not allowed!</h1>
+    {% endif %}
+{% endblock %}
+
+
