@@ -1,4 +1,5 @@
 import environ
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -114,6 +115,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_URL = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -122,3 +124,5 @@ STATICFILES_DIRS = [
 CRISPY_TEMPLATES_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'todo'
+
+django_heroku.settings(locals())
