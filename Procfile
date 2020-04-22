@@ -1,2 +1,2 @@
 
-web: gunicorn taskapp.wsgi
+web: gunicorn todopro.wsgi
